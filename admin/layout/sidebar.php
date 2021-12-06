@@ -21,10 +21,18 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
+                    <a href="index.php?page=tambahlokasi" class="nav-link">
+                        <i class="nav-icon fas fa-map"></i>
+                        <p>
+                        Lokasi
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="index.php?page=tambahkosan" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
-                            Tambah Kosan
+                        Kosan
                         </p>
                     </a>
                 </li>
