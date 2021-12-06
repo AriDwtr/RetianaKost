@@ -36,6 +36,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $page = $_GET['page'];
 
                 switch ($page) {
+                    case 'tambahlokasi':
+                        include "page/lokasi/add_lokasi.php";
+                        $status = "active";
+                        break;
                     case 'tambahkosan':
                         include "page/room/add_room.php";
                         $status = "active";
