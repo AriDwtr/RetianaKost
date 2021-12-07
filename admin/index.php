@@ -46,8 +46,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         $status = "active";
                         break;
                     // end lokasi
-                    case 'tambahkosan':
-                        include "page/room/add_room.php";
+                    case 'kosan':
+                        include "page/room/room.php";
                         $status = "active";
                         break;
                 }

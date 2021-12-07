@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.php?page=tambahkosan" class="nav-link">
+                    <a href="index.php?page=kosan" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                         Kosan
