@@ -36,10 +36,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $page = $_GET['page'];
 
                 switch ($page) {
+                    // lokasi
                     case 'tambahlokasi':
                         include "page/lokasi/add_lokasi.php";
                         $status = "active";
                         break;
+                    case 'hapuslokasi':
+                        include "page/lokasi/delete_lokasi.php";
+                        $status = "active";
+                        break;
+                    // end lokasi
                     case 'tambahkosan':
                         include "page/room/add_room.php";
                         $status = "active";
@@ -60,13 +66,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
-
     <!-- jQuery -->
     <script src="AdminLTE/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="AdminLTE/dist/js/adminlte.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // sembunyikan form kabupaten, kecamatan dan desa
+            $("#form_kab").hide();
+
+            // ambil data kabupaten ketika data memilih provinsi
+            $('body').on("change", "#form_prov", function() {
+                var id = $(this).val();
+                var data = "id=" + id + "&data=kabupaten";
+                $.ajax({
+                    type: 'POST',
+                    url: "page/lokasi/get_daerah.php",
+                    data: data,
+                    success: function(hasil) {
+                        $("#form_kab").html(hasil);
+                        $("#form_kab").show();
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
