@@ -6,6 +6,12 @@
             include "koneksi.php";
             // pemecahan id dan nama provinsi
             $prov = $_POST['provinsi'];
+            if ($prov == 0) {
+            echo '<div class="alert alert-warning" role="alert">
+            Oppss!!! Anda Belum Memasukan Provinsi Lokasi
+            </div>';
+            header("refresh:2;url=index.php?page=tambahlokasi");
+            }else{
             $result_prov = explode('|', $prov);
             $id_prov = $result_prov[0];
             $nama_prov = $result_prov[1];
@@ -23,6 +29,7 @@
             Berhasil Menambahkan Lokasi Baru
             </div>';
             header("refresh:2;url=index.php?page=tambahlokasi");
+            }
         };
         ?>
         <div class="row mb-2">
@@ -31,7 +38,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php" style="color:#760d9d;">Home</a></li>
                     <li class="breadcrumb-item active">Lokasi</li>
                 </ol>
             </div><!-- /.col -->
@@ -46,7 +53,7 @@
         <div class="row">
             <!-- list tambah lokasi -->
             <div class="col-md-6">
-                <div class="card card-warning card-outline">
+                <div class="card card-purple card-outline">
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
                             <h3 class="card-title">Tambah Lokasi Baru</h3>
@@ -55,7 +62,7 @@
                             <div class="form-group">
                                 <label>Pilih Kota</label>
                                 <select id="form_prov" class="form-control" name="provinsi">
-                                    <option value="">Pilih Provinsi</option>
+                                    <option value="0">Pilih Provinsi</option>
                                     <?php
                                     include "koneksi.php";
                                     $daerah = mysqli_query($conn, "SELECT kode,nama FROM wilayah_2020 WHERE CHAR_LENGTH(kode)=2 ORDER BY nama");
@@ -76,7 +83,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" name="add" class="btn btn-primary btn-block">Tambah Lokasi</button>
+                            <button type="submit" name="add" class="btn btn-primary btn-block" style="background-color: #760d9d; border-color: #760d9d;" onmouseover="this.style.backgroundColor='#430C57'" onmouseout="this.style.backgroundColor='#760d9d';">Tambah Lokasi</button>
                         </div>
                     </form>
                 </div>
@@ -84,7 +91,7 @@
             <!--end tambah lokasi -->
             <!-- list lokasi -->
             <div class="col-md-6">
-                <div class="card card-warning card-outline">
+                <div class="card card-purple card-outline">
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
