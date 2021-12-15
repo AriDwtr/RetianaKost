@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="AdminLTE/dist/css/adminlte.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -39,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 $page = $_GET['page'];
 
                 switch ($page) {
-                    // lokasi
+                        // lokasi
                     case 'tambahlokasi':
                         include "page/lokasi/add_lokasi.php";
                         $status = "active";
@@ -48,9 +48,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         include "page/lokasi/delete_lokasi.php";
                         $status = "active";
                         break;
-                    // end lokasi
+                        // end lokasi
                     case 'kosan':
                         include "page/room/room.php";
+                        $status = "active";
+                        break;
+                    case 'tambahroom':
+                        include "page/room/add_room.php";
                         $status = "active";
                         break;
                 }
@@ -96,6 +100,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
             });
         });
+
+        $(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
     </script>
 </body>
 
