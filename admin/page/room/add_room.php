@@ -57,6 +57,7 @@
                     </p>
 
                     <hr>
+                    <p><b><i><u>Detail Info</u></i></b></p>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -71,6 +72,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputName">Hanya Melayani Penghuni</label>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input custom-control-input-purple custom-control-input-outline" type="radio" id="customRadio1" name="customRadio2" checked>
+                                    <label for="customRadio1" class="custom-control-label">Khusus Pria</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input custom-control-input-purple custom-control-input-outline" type="radio" id="customRadio2" name="customRadio2">
+                                    <label for="customRadio2" class="custom-control-label">Khusus Wanita</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="custom-control custom-radio">
+                                    <input class="custom-control-input custom-control-input-purple custom-control-input-outline" type="radio" id="customRadio3" name="customRadio2">
+                                    <label for="customRadio3" class="custom-control-label">Pria & Wanita</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-default text-center active">
                             <input type="radio" name="color_option" id="color_option_a1" autocomplete="off" checked>

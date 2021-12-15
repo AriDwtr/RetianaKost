@@ -53,7 +53,7 @@
         <div class="row">
             <!-- list tambah lokasi -->
             <div class="col-md-6">
-                <div class="card card-purple card-outline">
+                <div class="card card-red card-outline">
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
                             <h3 class="card-title">Tambah Lokasi Baru</h3>
@@ -91,7 +91,7 @@
             <!--end tambah lokasi -->
             <!-- list lokasi -->
             <div class="col-md-6">
-                <div class="card card-purple card-outline">
+                <div class="card card-red card-outline">
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>
@@ -105,7 +105,7 @@
                             <tbody>
                                 <?php
                                 include "koneksi.php";
-                                $batas = 5;
+                                $batas = 4;
                                 $halaman = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
                                 $halaman_awal = ($halaman > 1) ? ($halaman * $batas) - $batas : 0;
 
