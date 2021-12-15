@@ -37,19 +37,40 @@
                 <div class="col-12 col-sm-6">
                     <div class="my-3">
                         <div class="form-group">
-                            <label for="inputName">Judul Kosan</label>
+                            <label for="inputName">Nama Kosan / Kontrakan</label>
                             <input type="text" id="inputName" class="form-control" placeholder="KOSAN RETANIA ABADI MAKASSAR ">
                         </div>
                     </div>
                     <p>
                     <div class="form-group">
-                        <label for="inputName">Pilih Wilayah</label>
-                        <input type="text" id="inputName" class="form-control" placeholder="KOSAN RETANIA ABADI MAKASSAR ">
+                        <label for="inputName">Pilih Wilayah Kosan</label>
+                        <select class="form-control select2" style="width: 100%;">
+                            <?php
+                            include "koneksi.php";
+                            $query = mysqli_query($conn, "SELECT * FROM lokasi ORDER BY id_provinsi ASC");
+                            while ($row = mysqli_fetch_array($query)) {
+                                echo '<option value = "' . $row['kota'] . '">' . $row['provinsi'] . ' - ' . $row['kota'] . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     </p>
 
                     <hr>
-                    <h4>Available Colors</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Tarif Kosan / Bulan</label>
+                                <input type="text" id="rupiahbulan" class="form-control" placeholder="Rp. 300.000">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="inputName">Tarif Kosan / Tahun</label>
+                                <input type="text" id="rupiahtahun" class="form-control" placeholder="Rp. 5.000.000">
+                            </div>
+                        </div>
+                    </div>
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-default text-center active">
                             <input type="radio" name="color_option" id="color_option_a1" autocomplete="off" checked>

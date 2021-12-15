@@ -102,13 +102,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
 
         $(document).ready(function() {
-    $('.product-image-thumb').on('click', function () {
-      var $image_element = $(this).find('img')
-      $('.product-image').prop('src', $image_element.attr('src'))
-      $('.product-image-thumb.active').removeClass('active')
-      $(this).addClass('active')
-    })
-  })
+            $('.product-image-thumb').on('click', function() {
+                var $image_element = $(this).find('img')
+                $('.product-image').prop('src', $image_element.attr('src'))
+                $('.product-image-thumb.active').removeClass('active')
+                $(this).addClass('active')
+            })
+        });
+
+        var rupiahbulan = document.getElementById('rupiahbulan');
+        rupiahbulan.addEventListener('keyup', function(e) {
+            rupiahbulan.value = formatRupiahbulan(this.value, 'Rp. ');
+        });
+
+        function formatRupiahbulan(angkabulan, prefix) {
+            var number_string = angkabulan.replace(/[^,\d]/g, '').toString(),
+                splitbulan = number_string.split(','),
+                sisabulan = splitbulan[0].length % 3,
+                rupiahbulan = splitbulan[0].substr(0, sisabulan),
+                ribuanbulan = splitbulan[0].substr(sisabulan).match(/\d{3}/gi);
+            if (ribuanbulan) {
+                separatorbulan = sisabulan ? '.' : '';
+                rupiahbulan += separatorbulan + ribuanbulan.join('.');
+            }
+
+            rupiahbulan = splitbulan[1] != undefined ? rupiahbulan + ',' + splitbulan[1] : rupiahbulan;
+            return prefix == undefined ? rupiahbulan : (rupiahbulan ? 'Rp. ' + rupiahbulan : '');
+        };
+
+        var rupiahtahun = document.getElementById('rupiahtahun');
+        rupiahtahun.addEventListener('keyup', function(e) {
+            rupiahtahun.value = formatrupiahtahun(this.value, 'Rp. ');
+        });
+
+        function formatrupiahtahun(angka1, prefix) {
+            var number_string = angka1.replace(/[^,\d]/g, '').toString(),
+                split1 = number_string.split(','),
+                sisa1 = split1[0].length % 3,
+                rupiahtahun = split1[0].substr(0, sisa1),
+                ribuan1 = split1[0].substr(sisa1).match(/\d{3}/gi);
+            if (ribuan1) {
+                separator1 = sisa1 ? '.' : '';
+                rupiahtahun += separator1 + ribuan1.join('.');
+            }
+
+            rupiahtahun = split1[1] != undefined ? rupiahtahun + ',' + split1[1] : rupiahtahun;
+            return prefix == undefined ? rupiahtahun : (rupiahtahun ? 'Rp. ' + rupiahtahun : '');
+        }
     </script>
 </body>
 
