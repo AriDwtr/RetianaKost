@@ -7,7 +7,7 @@
              </div><!-- /.col -->
              <div class="col-sm-6">
                  <ol class="breadcrumb float-sm-right">
-                     <li class="breadcrumb-item"><a href="index.php" style="color:#760d9d;">Home</a></li>
+                     <li class="breadcrumb-item"><a href="index.php" style="color:#ff3d51;">Home</a></li>
                      <li class="breadcrumb-item active">Dashboard Kosan</li>
                  </ol>
              </div><!-- /.col -->
@@ -19,7 +19,7 @@
  <!-- Main content -->
  <div class="content">
      <div class="container-fluid">
-         <a href="index.php?page=tambahroom" class="btn btn-success mb-3" style="background-color: #ff3d51; border-color: #ff3d51;" onmouseover="this.style.backgroundColor='#C73E4C'" onmouseout="this.style.backgroundColor='#ff3d51';"><i class="fas fa-plus"></i> Tambah Kosan</a>
+         <a href="index.php?page=tambahroom" class="btn btn-success mb-3" style="background-color: #ff3d51; border-color: #ff3d51;" onmouseover="this.style.backgroundColor='#E63345'" onmouseout="this.style.backgroundColor='#ff3d51';"><i class="fas fa-plus"></i> Tambah Kosan</a>
          <div class="card card-solid">
              <div class="card-body pb-0">
                  <div class="row">

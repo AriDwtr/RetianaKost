@@ -17,21 +17,30 @@
             </div>
         </div>
 
+        <?php
+function active($currect_page) {
+    $url = $_SERVER['REQUEST_URI'];
+
+    if($currect_page == $url){
+        echo 'active';
+    }
+}
+?>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="index.php?page=tambahlokasi" class="nav-link">
-                        <i class="nav-icon fas fa-map"></i>
-                        <p>
+                        <i class="nav-icon fas fa-map" style="color:#ff3d51"></i>
+                        <p style="color:#ff3d51">
                         Lokasi
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="index.php?page=kosan" class="nav-link">
-                        <i class="nav-icon fas fa-home"></i>
-                        <p>
+                        <i class="nav-icon fas fa-home" style="color: #ff3d51;"></i>
+                        <p style="color: #ff3d51;">
                         Kosan
                         </p>
                     </a>

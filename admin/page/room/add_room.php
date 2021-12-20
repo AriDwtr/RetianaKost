@@ -6,8 +6,8 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="index.php" style="color:#760d9d;">Home</a></li>
-                    <li class="breadcrumb-item active">E-commerce</li>
+                    <li class="breadcrumb-item"><a href="index.php" style="color:#ff3d51;">Home</a></li>
+                    <li class="breadcrumb-item active">New Room</li>
                 </ol>
             </div>
         </div>
@@ -18,200 +18,193 @@
 <section class="content">
 
     <!-- Default box -->
-    <div class="card card-solid">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-sm-6">
-                    <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
-                    <div class="col-12">
-                        <img src="AdminLTE/dist/img/prod-1.jpg" class="product-image" alt="Product Image">
-                    </div>
-                    <div class="col-12 product-image-thumbs">
-                        <div class="product-image-thumb active"><img src="AdminLTE/dist/img/prod-1.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="AdminLTE/dist/img/prod-2.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="AdminLTE/dist/img/prod-3.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="AdminLTE/dist/img/prod-4.jpg" alt="Product Image"></div>
-                        <div class="product-image-thumb"><img src="AdminLTE/dist/img/prod-5.jpg" alt="Product Image"></div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                    <div class="my-3">
-                        <div class="form-group">
-                            <label for="inputName">Nama Kosan / Kontrakan</label>
-                            <input type="text" id="inputName" class="form-control" placeholder="KOSAN RETANIA ABADI MAKASSAR ">
+    <div class="container-fluid">
+        <?php
+        error_reporting(0);
+        if (isset($_POST['add'])) {
+            include "koneksi.php";
+            $nama_kosan = $_POST['namakosan'];
+            $wilayah = $_POST['wilayah'];
+            $tarif_bulan = $_POST['tarif_bulan'];
+            $tarif_tahun = $_POST['tarif_tahun'];
+            $layanan = $_POST['layanan'];
+            //---- foto utama ---
+            $foto_utama = $_FILES['foto_utama']['name'];
+            $tempname_fotoUtama = $_FILES['foto_utama']['tmp_name'];
+            //---- foto kamar ------
+            $foto_kamar = $_FILES['foto_kamar']['name'];
+            $tempname_fotoKamar = $_FILES['foto_kamar']['tmp_name'];
+            //---- foto toilet -----
+            $foto_toilet = $_FILES['foto_toilet']['name'];
+            $tempname_fotoToilet = $_FILES['foto_toilet']['tmp_name'];
+
+            $fasilitas = $_POST['fasilitas'];
+            $data_fasilitas = implode(',', $fasilitas);
+
+            $tlp = $_POST['notlp'];
+            $latlong = $_POST['latlong'];
+
+            $folder = "img/db_images/";
+
+            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,tarif_bulan,tarif_tahun,layanan,foto_utama,foto_kamar,foto_toilet,fasilitas,tlp,map) 
+            VALUES ('','$nama_kosan','$wilayah','$tarif_bulan','$tarif_tahun','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$data_fasilitas','$tlp','$latlong')");
+
+            move_uploaded_file($tempname_fotoUtama,$folder.$foto_utama);
+            move_uploaded_file($tempname_fotoKamar,$folder.$foto_kamar);
+            move_uploaded_file($tempname_fotoToilet,$folder.$foto_toilet);
+
+            echo '<div class="alert alert-success" role="alert">
+            Berhasil Menambahkan Kosan Baru
+            </div>';
+            echo "<script>window.setTimeout(function() {
+                window.location = 'index.php?page=kosan';
+                }, 1500);</script>";
+        };
+        ?>
+        <div class="card  card-purple card-outline">
+            <form action="" method="POST" enctype="multipart/form-data">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="col-12">
+                                <img src="img/noimages/defaultimages.png" id="image-preview-utama" class="product-image" alt="Product Image">
+                            </div>
+                            <div class="col-12 product-image-thumbs">
+                                <div class="product-image-thumb active"><img src="img/noimages/defaultimages.png" id="image-preview" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-kamar" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-toilet" alt="Product Image"></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="my-3">
+                                <div class="form-group">
+                                    <label for="inputName">Nama Kosan / Kontrakan</label>
+                                    <input type="text" name="namakosan" class="form-control" placeholder="KOSAN RETANIA ABADI MAKASSAR" required oninvalid="this.setCustomValidity('Nama Kosan Masih Kosong')" oninput="this.setCustomValidity('')">
+                                </div>
+                            </div>
+                            <p>
+                            <div class="form-group">
+                                <div class="select2-purple">
+                                    <label for="inputName">Pilih Wilayah Kosan</label>
+                                    <select class="select2" name="wilayah" style="width: 100%;" data-dropdown-css-class="select2-purple">
+                                        <?php
+                                        include "koneksi.php";
+                                        $query = mysqli_query($conn, "SELECT * FROM lokasi ORDER BY id_provinsi ASC");
+                                        while ($row = mysqli_fetch_array($query)) {
+                                            echo '<option value = "' . $row['kota'] . '">' . $row['provinsi'] . ' - ' . $row['kota'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            </p>
+
+                            <hr>
+                            <p><b><i><u>Detail Info</u></i></b></p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputName">Tarif Kosan / Bulan</label>
+                                        <input type="text" id="rupiahbulan" name="tarif_bulan" class="form-control" placeholder="Rp. 300.000">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="inputName">Tarif Kosan / Tahun</label>
+                                        <input type="text" id="rupiahtahun" name="tarif_tahun" class="form-control" placeholder="Rp. 5.000.000">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Hanya Melayani Penghuni</label>
+                                <div class="row">
+                                    <div class="col-4 col-md-4">
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input custom-control-input-purple custom-control-input-outline" value="Khusus Pria" type="radio" id="customRadio1" name="layanan" checked>
+                                            <label for="customRadio1" class="custom-control-label">Khusus Pria</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-md-4">
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input custom-control-input-purple custom-control-input-outline" value="Khusus Wanita" type="radio" id="customRadio2" name="layanan">
+                                            <label for="customRadio2" class="custom-control-label">Khusus Wanita</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 col-md-4">
+                                        <div class="custom-control custom-radio">
+                                            <input class="custom-control-input custom-control-input-purple custom-control-input-outline" value="Pria & Wanita" type="radio" id="customRadio3" name="layanan">
+                                            <label for="customRadio3" class="custom-control-label">Pria & Wanita</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <p><b><i><u>Upload Foto</u></i></b></p>
+                            <div class="row">
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-utama" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Utama
+                                    </label>
+                                    <input id="file-upload-utama" name="foto_utama" type="file" onchange="previewImageUtama();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-kamar" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Kamar
+                                    </label>
+                                    <input id="file-upload-kamar" name="foto_kamar" type="file" onchange="previewImageKamar();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Toilet
+                                    </label>
+                                    <input id="file-upload-toilet" name="foto_toilet" type="file" onchange="previewImageToilet();" hidden />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <p>
-                    <div class="form-group">
-                        <label for="inputName">Pilih Wilayah Kosan</label>
-                        <select class="form-control select2" style="width: 100%;">
-                            <?php
-                            include "koneksi.php";
-                            $query = mysqli_query($conn, "SELECT * FROM lokasi ORDER BY id_provinsi ASC");
-                            while ($row = mysqli_fetch_array($query)) {
-                                echo '<option value = "' . $row['kota'] . '">' . $row['provinsi'] . ' - ' . $row['kota'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    </p>
 
                     <hr>
-                    <p><b><i><u>Detail Info</u></i></b></p>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="inputName">Tarif Kosan / Bulan</label>
-                                <input type="text" id="rupiahbulan" class="form-control" placeholder="Rp. 300.000">
+                                <label>Fasilitas Tersedia</label>
+                                <div class="select2-purple">
+                                    <select class="select2" multiple="multiple" name="fasilitas[]" data-placeholder="Pilih Fasilitas" data-dropdown-css-class="select2-purple" style="width: 100%;" required>
+                                        <option value="Free Wifi 24 jam">Free Wifi 24 jam</option>
+                                        <option value="Kamar Mandi Dalam">Kamar Mandi Dalam</option>
+                                        <option value="Kamar Mandi Luar">Kamar Mandi Luar</option>
+                                        <option value="Listrik Token">Listrik Token</option>
+                                        <option value="AC">AC</option>
+                                        <option value="Kipas Angin">Kipas Angin</option>
+                                        <option value="Lemari Pakaian">Lemari Pakaian</option>
+                                        <option value="Dapur Umum">Dapur Umum</option>
+                                        <option value="Air 24 Jam">Air Bersih 24 Jam</option>
+                                        <option value="Meja Belajar">Meja Belajar</option>
+                                        <option value="Tempat Tidur Spring Bed">Tempat Tidur Spring Bed</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="inputName">Tarif Kosan / Tahun</label>
-                                <input type="text" id="rupiahtahun" class="form-control" placeholder="Rp. 5.000.000">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputName">Hanya Melayani Penghuni</label>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-purple custom-control-input-outline" type="radio" id="customRadio1" name="customRadio2" checked>
-                                    <label for="customRadio1" class="custom-control-label">Khusus Pria</label>
+                            <label>No Telp / Whatsapp</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-purple custom-control-input-outline" type="radio" id="customRadio2" name="customRadio2">
-                                    <label for="customRadio2" class="custom-control-label">Khusus Wanita</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="custom-control custom-radio">
-                                    <input class="custom-control-input custom-control-input-purple custom-control-input-outline" type="radio" id="customRadio3" name="customRadio2">
-                                    <label for="customRadio3" class="custom-control-label">Pria & Wanita</label>
-                                </div>
+                                <input type="number" name="notlp" class="form-control" required oninvalid="this.setCustomValidity('No Telp Tidak Boleh Kosong')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
                     <hr>
-
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-default text-center active">
-                            <input type="radio" name="color_option" id="color_option_a1" autocomplete="off" checked>
-                            Green
-                            <br>
-                            <i class="fas fa-circle fa-2x text-green"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_a2" autocomplete="off">
-                            Blue
-                            <br>
-                            <i class="fas fa-circle fa-2x text-blue"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_a3" autocomplete="off">
-                            Purple
-                            <br>
-                            <i class="fas fa-circle fa-2x text-purple"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_a4" autocomplete="off">
-                            Red
-                            <br>
-                            <i class="fas fa-circle fa-2x text-red"></i>
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_a5" autocomplete="off">
-                            Orange
-                            <br>
-                            <i class="fas fa-circle fa-2x text-orange"></i>
-                        </label>
-                    </div>
-
-                    <h4 class="mt-3">Size <small>Please select one</small></h4>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b1" autocomplete="off">
-                            <span class="text-xl">S</span>
-                            <br>
-                            Small
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b2" autocomplete="off">
-                            <span class="text-xl">M</span>
-                            <br>
-                            Medium
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b3" autocomplete="off">
-                            <span class="text-xl">L</span>
-                            <br>
-                            Large
-                        </label>
-                        <label class="btn btn-default text-center">
-                            <input type="radio" name="color_option" id="color_option_b4" autocomplete="off">
-                            <span class="text-xl">XL</span>
-                            <br>
-                            Xtra-Large
-                        </label>
-                    </div>
-
-                    <div class="bg-gray py-2 px-3 mt-4">
-                        <h2 class="mb-0">
-                            $80.00
-                        </h2>
-                        <h4 class="mt-0">
-                            <small>Ex Tax: $80.00 </small>
-                        </h4>
-                    </div>
-
-                    <div class="mt-4">
-                        <div class="btn btn-primary btn-lg btn-flat">
-                            <i class="fas fa-cart-plus fa-lg mr-2"></i>
-                            Add to Cart
-                        </div>
-
-                        <div class="btn btn-default btn-lg btn-flat">
-                            <i class="fas fa-heart fa-lg mr-2"></i>
-                            Add to Wishlist
-                        </div>
-                    </div>
-
-                    <div class="mt-4 product-share">
-                        <a href="#" class="text-gray">
-                            <i class="fab fa-facebook-square fa-2x"></i>
-                        </a>
-                        <a href="#" class="text-gray">
-                            <i class="fab fa-twitter-square fa-2x"></i>
-                        </a>
-                        <a href="#" class="text-gray">
-                            <i class="fas fa-envelope-square fa-2x"></i>
-                        </a>
-                        <a href="#" class="text-gray">
-                            <i class="fas fa-rss-square fa-2x"></i>
-                        </a>
-                    </div>
+                    <div id="mapid" style="width:100%; height: 250px;"></div>
+                    <input type="text" class="form-control" id="latlong" name="latlong" hidden>
+                    <br>
+                    <button type="submit" name="add" class="btn btn-success btn-block"><b>TAMBAH KOSAN BARU</b></button>
 
                 </div>
-            </div>
-            <div class="row mt-4">
-                <nav class="w-100">
-                    <div class="nav nav-tabs" id="product-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true">Description</a>
-                        <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="false">Comments</a>
-                        <a class="nav-item nav-link" id="product-rating-tab" data-toggle="tab" href="#product-rating" role="tab" aria-controls="product-rating" aria-selected="false">Rating</a>
-                    </div>
-                </nav>
-                <div class="tab-content p-3" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae condimentum erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed posuere, purus at efficitur hendrerit, augue elit lacinia arcu, a eleifend sem elit et nunc. Sed rutrum vestibulum est, sit amet cursus dolor fermentum vel. Suspendisse mi nibh, congue et ante et, commodo mattis lacus. Duis varius finibus purus sed venenatis. Vivamus varius metus quam, id dapibus velit mattis eu. Praesent et semper risus. Vestibulum erat erat, condimentum at elit at, bibendum placerat orci. Nullam gravida velit mauris, in pellentesque urna pellentesque viverra. Nullam non pellentesque justo, et ultricies neque. Praesent vel metus rutrum, tempus erat a, rutrum ante. Quisque interdum efficitur nunc vitae consectetur. Suspendisse venenatis, tortor non convallis interdum, urna mi molestie eros, vel tempor justo lacus ac justo. Fusce id enim a erat fringilla sollicitudin ultrices vel metus. </div>
-                    <div class="tab-pane fade" id="product-comments" role="tabpanel" aria-labelledby="product-comments-tab"> Vivamus rhoncus nisl sed venenatis luctus. Sed condimentum risus ut tortor feugiat laoreet. Suspendisse potenti. Donec et finibus sem, ut commodo lectus. Cras eget neque dignissim, placerat orci interdum, venenatis odio. Nulla turpis elit, consequat eu eros ac, consectetur fringilla urna. Duis gravida ex pulvinar mauris ornare, eget porttitor enim vulputate. Mauris hendrerit, massa nec aliquam cursus, ex elit euismod lorem, vehicula rhoncus nisl dui sit amet eros. Nulla turpis lorem, dignissim a sapien eget, ultrices venenatis dolor. Curabitur vel turpis at magna elementum hendrerit vel id dui. Curabitur a ex ullamcorper, ornare velit vel, tincidunt ipsum. </div>
-                    <div class="tab-pane fade" id="product-rating" role="tabpanel" aria-labelledby="product-rating-tab"> Cras ut ipsum ornare, aliquam ipsum non, posuere elit. In hac habitasse platea dictumst. Aenean elementum leo augue, id fermentum risus efficitur vel. Nulla iaculis malesuada scelerisque. Praesent vel ipsum felis. Ut molestie, purus aliquam placerat sollicitudin, mi ligula euismod neque, non bibendum nibh neque et erat. Etiam dignissim aliquam ligula, aliquet feugiat nibh rhoncus ut. Aliquam efficitur lacinia lacinia. Morbi ac molestie lectus, vitae hendrerit nisl. Nullam metus odio, malesuada in vehicula at, consectetur nec justo. Quisque suscipit odio velit, at accumsan urna vestibulum a. Proin dictum, urna ut varius consectetur, sapien justo porta lectus, at mollis nisi orci et nulla. Donec pellentesque tortor vel nisl commodo ullamcorper. Donec varius massa at semper posuere. Integer finibus orci vitae vehicula placerat. </div>
-                </div>
-            </div>
+            </form>
+            <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
     </div>
     <!-- /.card -->
 

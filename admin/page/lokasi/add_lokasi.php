@@ -10,7 +10,9 @@
             echo '<div class="alert alert-warning" role="alert">
             Oppss!!! Anda Belum Memasukan Provinsi Lokasi
             </div>';
-            header("refresh:2;url=index.php?page=tambahlokasi");
+            echo "<script>window.setTimeout(function() {
+                window.location = 'index.php?page=tambahlokasi';
+                }, 1000);</script>";
             }else{
             $result_prov = explode('|', $prov);
             $id_prov = $result_prov[0];
@@ -28,17 +30,19 @@
             echo '<div class="alert alert-success" role="alert">
             Berhasil Menambahkan Lokasi Baru
             </div>';
-            header("refresh:2;url=index.php?page=tambahlokasi");
+            echo "<script>window.setTimeout(function() {
+                window.location = 'index.php?page=tambahlokasi';
+                }, 1500);</script>";
             }
         };
         ?>
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Lokasi</h1>
+                <h1 class="m-0">LOKASI</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="index.php" style="color:#760d9d;">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.php" style="color:#ff3d51;">Home</a></li>
                     <li class="breadcrumb-item active">Lokasi</li>
                 </ol>
             </div><!-- /.col -->
@@ -53,7 +57,7 @@
         <div class="row">
             <!-- list tambah lokasi -->
             <div class="col-md-6">
-                <div class="card card-red card-outline">
+                <div class="card card-purple card-outline">
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="card-header">
                             <h3 class="card-title">Tambah Lokasi Baru</h3>
@@ -83,7 +87,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" name="add" class="btn btn-primary btn-block" style="background-color: #760d9d; border-color: #760d9d;" onmouseover="this.style.backgroundColor='#430C57'" onmouseout="this.style.backgroundColor='#760d9d';">Tambah Lokasi</button>
+                            <button type="submit" name="add" class="btn btn-success btn-block">Tambah Lokasi</button>
                         </div>
                     </form>
                 </div>
@@ -91,7 +95,7 @@
             <!--end tambah lokasi -->
             <!-- list lokasi -->
             <div class="col-md-6">
-                <div class="card card-red card-outline">
+                <div class="card card-purple card-outline">
                     <div class="card-body">
                         <table class="table table-bordered">
                             <thead>

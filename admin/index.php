@@ -17,8 +17,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="AdminLTE/plugins/fontawesome-free/css/all.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="AdminLTE/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+     <!-- leaflet css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <!-- leaflet geocoder css  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href="AdminLTE/dist/css/adminlte.min.css">
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        input[type=text]:focus {
+        border: 1px solid #760d9d;
+        }
+        input[type=number]:focus {
+        border: 1px solid #760d9d;
+        }
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
@@ -77,9 +103,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="AdminLTE/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="AdminLTE/plugins/select2/js/select2.full.min.js"></script>
     <!-- AdminLTE App -->
     <script src="AdminLTE/dist/js/adminlte.min.js"></script>
+    <!-- leaflet js  -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+   <!-- leaflet geocoder js  -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script type="text/javascript">
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+
+
         $(document).ready(function() {
 
             // sembunyikan form kabupaten, kecamatan dan desa
@@ -149,6 +192,69 @@ scratch. This page gets rid of all links and provides the needed markup only.
             rupiahtahun = split1[1] != undefined ? rupiahtahun + ',' + split1[1] : rupiahtahun;
             return prefix == undefined ? rupiahtahun : (rupiahtahun ? 'Rp. ' + rupiahtahun : '');
         }
+
+        function previewImageUtama() {
+            document.getElementById("file-upload-utama").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-utama").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview").src = oFREvent.target.result;
+                document.getElementById("image-preview-utama").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageKamar() {
+            document.getElementById("file-upload-kamar").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-kamar").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-kamar").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageToilet() {
+            document.getElementById("file-upload-toilet").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-toilet").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-toilet").src = oFREvent.target.result;
+            };
+        };
+
+        //maps
+        // set lokasi latitude dan longitude, lokasinya kota palembang 
+        var mymap = L.map('mapid').setView([-2.9547949, 104.6929233], 13);   
+        //setting maps menggunakan api mapbox bukan google maps, daftar dan dapatkan token      
+        L.tileLayer(
+            'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoicmV0YW5pYWtvc3QiLCJhIjoiY2t4ZTA0eXpiMW85NjMwcGY3N2VjcjE4eiJ9.RYHIYy7B60p7_rgE-GGL1Q', 
+            {
+                maxZoom: 20,
+                id: 'mapbox/streets-v11', //menggunakan peta model streets-v11 kalian bisa melihat jenis-jenis peta lainnnya di web resmi mapbox
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'pk.eyJ1IjoicmV0YW5pYWtvc3QiLCJhIjoiY2t4ZTA0eXpiMW85NjMwcGY3N2VjcjE4eiJ9.RYHIYy7B60p7_rgE-GGL1Q'
+            }).addTo(mymap);
+        
+            L.Control.geocoder().addTo(mymap);
+            
+        // buat variabel berisi fugnsi L.popup 
+        var popup = L.popup();
+
+        // buat fungsi popup saat map diklik
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("Titik Di Terapkan"
+                    .toString()
+                    ) //set isi konten yang ingin ditampilkan, kali ini kita akan menampilkan latitude dan longitude
+                .openOn(mymap);
+
+            document.getElementById('latlong').value = e.latlng //value pada form latitde, longitude akan berganti secara otomatis
+        }
+        mymap.on('click', onMapClick); //jalankan fungsi
     </script>
 </body>
 
