@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 03:58 PM
+-- Generation Time: Dec 20, 2021 at 05:21 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -39,15 +39,17 @@ CREATE TABLE `kosan` (
   `foto_toilet` text DEFAULT NULL,
   `fasilitas` text NOT NULL,
   `tlp` varchar(20) NOT NULL,
-  `map` text DEFAULT NULL
+  `map` text DEFAULT NULL,
+  `alamat` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kosan`
 --
 
-INSERT INTO `kosan` (`id_kosan`, `nama_kosan`, `wilayah`, `tarif_bulan`, `tarif_tahun`, `layanan`, `foto_utama`, `foto_kamar`, `foto_toilet`, `fasilitas`, `tlp`, `map`) VALUES
-(13, 'Kosan Retania Palembang', 'KOTA PALEMBANG', 'Rp. 450.000', 'Rp. 5.000.000', 'Khusus Wanita', '074525100_1429960385-10.jpg', 'content_kost_murah.jpg', '', 'Free Wifi 24 jam,Kamar Mandi Dalam,AC', '081218113193', 'LatLng(-2.940235, 104.732458)');
+INSERT INTO `kosan` (`id_kosan`, `nama_kosan`, `wilayah`, `tarif_bulan`, `tarif_tahun`, `layanan`, `foto_utama`, `foto_kamar`, `foto_toilet`, `fasilitas`, `tlp`, `map`, `alamat`) VALUES
+(13, 'Kosan Retania Palembang', 'KOTA PALEMBANG', 'Rp. 450.000', 'Rp. 5.000.000', 'Khusus Wanita', '074525100_1429960385-10.jpg', 'content_kost_murah.jpg', '', 'Free Wifi 24 jam,Kamar Mandi Dalam,AC', '081218113193', 'LatLng(-2.940235, 104.732458)', NULL),
+(14, 'Kosan Nia', 'KOTA ADM. JAKARTA SELATAN', 'Rp. 500.000', 'Rp. 6.000.000', 'Pria & Wanita', 'content_kost_murah.jpg', '', '', 'Free Wifi 24 jam,AC,Kipas Angin,Tempat Tidur Spring Bed', '081218113193', 'LatLng(-6.163348, 106.902208)', 'jl. sudirman said nomor 45 jakarta selatan');
 
 -- --------------------------------------------------------
 
@@ -91388,7 +91390,7 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `kosan`
 --
 ALTER TABLE `kosan`
-  MODIFY `id_kosan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_kosan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
