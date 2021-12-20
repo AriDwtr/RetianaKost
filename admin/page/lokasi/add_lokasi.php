@@ -7,30 +7,30 @@
             // pemecahan id dan nama provinsi
             $prov = $_POST['provinsi'];
             if ($prov == 0) {
-            echo '<div class="alert alert-warning" role="alert">
+                echo '<div class="alert alert-warning" role="alert">
             Oppss!!! Anda Belum Memasukan Provinsi Lokasi
             </div>';
-            echo "<script>window.setTimeout(function() {
+                echo "<script>window.setTimeout(function() {
                 window.location = 'index.php?page=tambahlokasi';
                 }, 1000);</script>";
-            }else{
-            $result_prov = explode('|', $prov);
-            $id_prov = $result_prov[0];
-            $nama_prov = $result_prov[1];
-            // end pemecahan id dan nama provinsi     
-            // pemecahan id dan nama provinsi       
-            $kota = $_POST['kota'];
-            $result_kota = explode('|', $kota);
-            $id_kota = $result_kota[0];
-            $nama_kota = $result_kota[1];
-            // end pemecahan id dan nama provinsi
-            $ket = $_POST['keterangan'];
-            mysqli_query($conn, "INSERT INTO lokasi (id_lokasi,id_provinsi,provinsi,id_kota,kota,ket_lokasi)
+            } else {
+                $result_prov = explode('|', $prov);
+                $id_prov = $result_prov[0];
+                $nama_prov = $result_prov[1];
+                // end pemecahan id dan nama provinsi     
+                // pemecahan id dan nama provinsi       
+                $kota = $_POST['kota'];
+                $result_kota = explode('|', $kota);
+                $id_kota = $result_kota[0];
+                $nama_kota = $result_kota[1];
+                // end pemecahan id dan nama provinsi
+                $ket = $_POST['keterangan'];
+                mysqli_query($conn, "INSERT INTO lokasi (id_lokasi,id_provinsi,provinsi,id_kota,kota,ket_lokasi)
             VALUES ('','$id_prov','$nama_prov','$id_kota','$nama_kota','$ket')");
-            echo '<div class="alert alert-success" role="alert">
+                echo '<div class="alert alert-success" role="alert">
             Berhasil Menambahkan Lokasi Baru
             </div>';
-            echo "<script>window.setTimeout(function() {
+                echo "<script>window.setTimeout(function() {
                 window.location = 'index.php?page=tambahlokasi';
                 }, 1500);</script>";
             }
@@ -133,8 +133,8 @@
                                             <center><span class="badge bg-success">Aktif</span></center>
                                         </td>
                                         <td>
-                                            <a href="http://"><span class="badge bg-primary">Edit  <i class="fas fa-pen"></i></span></a>
-                                            <a href="index.php?page=hapuslokasi&id=<?php echo $data['id_lokasi'];?>" onClick="return confirm('Hapus Lokasi Yang Anda Pilih ?')" title="Hapus Pasien"><span class="badge bg-danger">Hapus  <i class="fas fa-trash"></i></span></a>
+                                            <a href="http://"><span class="badge bg-primary">Edit <i class="fas fa-pen"></i></span></a>
+                                            <a href="index.php?page=hapuslokasi&id=<?php echo $data['id_lokasi']; ?>" onClick="return confirm('Hapus Lokasi Yang Anda Pilih ?')" title="Hapus Pasien"><span class="badge bg-danger">Hapus <i class="fas fa-trash"></i></span></a>
                                         </td>
 
                                     </tr>

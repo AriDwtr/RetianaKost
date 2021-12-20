@@ -43,15 +43,16 @@
 
             $tlp = $_POST['notlp'];
             $latlong = $_POST['latlong'];
+            $alamat = $_POST['alamat'];
 
             $folder = "img/db_images/";
 
-            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,tarif_bulan,tarif_tahun,layanan,foto_utama,foto_kamar,foto_toilet,fasilitas,tlp,map) 
-            VALUES ('','$nama_kosan','$wilayah','$tarif_bulan','$tarif_tahun','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$data_fasilitas','$tlp','$latlong')");
+            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,tarif_bulan,tarif_tahun,layanan,foto_utama,foto_kamar,foto_toilet,fasilitas,tlp,map,alamat) 
+            VALUES ('','$nama_kosan','$wilayah','$tarif_bulan','$tarif_tahun','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$data_fasilitas','$tlp','$latlong','$alamat')");
 
-            move_uploaded_file($tempname_fotoUtama,$folder.$foto_utama);
-            move_uploaded_file($tempname_fotoKamar,$folder.$foto_kamar);
-            move_uploaded_file($tempname_fotoToilet,$folder.$foto_toilet);
+            move_uploaded_file($tempname_fotoUtama, $folder . $foto_utama);
+            move_uploaded_file($tempname_fotoKamar, $folder . $foto_kamar);
+            move_uploaded_file($tempname_fotoToilet, $folder . $foto_toilet);
 
             echo '<div class="alert alert-success" role="alert">
             Berhasil Menambahkan Kosan Baru
@@ -196,6 +197,11 @@
                         </div>
                     </div>
                     <hr>
+                    <div class="form-group">
+                        <label for="inputName">Alamat Lengkap</label>
+                        <input type="text" name="alamat" autocomplete="FALSE" class="form-control" placeholder="Jl. Sukabangun 2 No.245" required oninvalid="this.setCustomValidity('Alamat Wajib di Isi')" oninput="this.setCustomValidity('')">
+                    </div>
+                    <label for="inputName">Buat Pin Map</label>
                     <div id="mapid" style="width:100%; height: 250px;"></div>
                     <input type="text" class="form-control" id="latlong" name="latlong" hidden>
                     <br>
