@@ -11,7 +11,7 @@
     <!-- Title  -->
     <title>Retania | KOST</title>
 
-        <!-- Favicon  -->
+    <!-- Favicon  -->
     <link href="css/Logo/SVG/Logo V!-1.svg" rel="icon">
     <link href="css/Logo/SVG/Logo V!-1.svg" rel="apple-touch-icon">
 
@@ -33,8 +33,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="search-content">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type your keyword...">
+                        <form action="index.php?page=Cari" method="POST">
+                            <input type="search" name="search" id="search" placeholder="Tulis Kata Kunci..." required>
                             <button type="submit"><img src="css/img/core-img/search.png" alt=""></button>
                         </form>
                     </div>
@@ -65,31 +65,34 @@
 
         <!-- content  -->
         <?php
-            if (isset($_GET['page'])) {
-                $page = $_GET['page'];
+        if (isset($_GET['page'])) {
+            $page = $_GET['page'];
 
-                switch ($page) {
-                    case 'MenuKosan':
-                        include "page/kosan/menu_kosan.php";
-                        break;
-                    case 'Wilayah':
-                        include "page/kosan/detail_daerah.php";
-                        break;
-                    case 'Detail':
-                        include "page/kosan/detail_kosan.php";
-                        break;
-                }
-            } else {
-                include "page/home/home.php";
+            switch ($page) {
+                case 'MenuKosan':
+                    include "page/kosan/menu_kosan.php";
+                    break;
+                case 'Wilayah':
+                    include "page/kosan/detail_daerah.php";
+                    break;
+                case 'Detail':
+                    include "page/kosan/detail_kosan.php";
+                    break;
+                case 'Cari':
+                    include "page/kosan/cari.php";
+                    break;
             }
+        } else {
+            include "page/home/home.php";
+        }
 
-            ?>
+        ?>
         <!-- content-->
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">
-       <?php include "page/layout/footer.php" ?>
+        <?php include "page/layout/footer.php" ?>
     </footer>
     <!-- ##### Footer Area End ##### -->
 

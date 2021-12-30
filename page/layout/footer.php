@@ -28,21 +28,8 @@
                                         class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">Shop</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Product</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
-                                        </li>
+                                    <li class="nav-item <?php echo basename($_SERVER['REQUEST_URI']) == 'retianaKost' ? 'active' : '';?>"><a class="nav-link" href="index.php">Home</a></li>
+                                    <li class="nav-item <?php echo basename($_SERVER['REQUEST_URI']) == 'index.php?page=MenuKosan' ? 'active' : '';?>"><a class="nav-link" href="index.php?page=MenuKosan">Menu Kosan</a></li>
                                     </ul>
                                 </div>
                             </nav>

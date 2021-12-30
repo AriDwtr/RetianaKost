@@ -9,13 +9,11 @@
         <div class="catagories-menu">
             <?php
             include "koneksi.php";
-            $id= $_GET['id'];
             $replace = array("KOTA", "ADM.", "KAB.");
-            $query = mysqli_query($conn,"SELECT * FROM lokasi WHERE kota != '$id'");
+            $query = mysqli_query($conn,"SELECT * FROM lokasi");
             ?>
             <ul>
-                <li class="active"><a style="font-size: 14px;"><?= str_replace($replace,"",$id) ?></a></li>
-                <?php
+                <?php 
                 while ($kota = mysqli_fetch_array($query)) { ?>
                 <li><a href="index.php?page=Wilayah&id=<?= $kota['kota']?>" style="font-size: 14px;"><?= str_replace($replace,"",$kota['kota']) ?></a></li>
                 <?php 
@@ -30,15 +28,8 @@
 
         <div class="row">
             <?php
-            $query_product = mysqli_query($conn,"SELECT * FROM kosan WHERE wilayah='$id'");
-            $cek = mysqli_num_rows($query_product);
-            if ($cek == 0) {
-                echo '<div class="col-12 col-sm-12 col-md-12 col-xl-12">';
-                echo '<div class="alert alert-danger" role="alert">
-                <center>MAAF KOSAN UNTUK WILIAYAH '.str_replace($replace,"",$id).' BELUM TERSEDIA !!!</center>
-              </div>';
-                echo '</div>';
-            }else{
+            $cari = $_POST['search'];
+            $query_product = mysqli_query($conn,"SELECT * FROM kosan WHERE nama_kosan OR wilayah LIKE '%".$cari."%'");
             while ($kosan = mysqli_fetch_array($query_product)) {
             ?>
             <div class="col-12 col-sm-6 col-md-12 col-xl-6">
@@ -63,7 +54,7 @@
                         <!-- Ratings & Cart -->
                         <div class="ratings-cart text-right">
                             <div class="ratings">
-                            <a href="#">
+                            <a href="index.php?page=Detail&id=<?= $kosan['id_kosan'] ?>">
                                 <small><?= str_replace($replace,"",$kosan['wilayah']) ?></small>
                             </a>
                             </div>
@@ -72,10 +63,21 @@
                 </div>
             </div>
             <?php
-                }
-            }
-            ?>
+            } ?>
 
         </div>
+
+        <!-- <div class="row">
+            <div class="col-12">
+                <nav aria-label="navigation">
+                    <ul class="pagination justify-content-end mt-50">
+                        <li class="page-item active"><a class="page-link" href="#">01.</a></li>
+                        <li class="page-item"><a class="page-link" href="#">02.</a></li>
+                        <li class="page-item"><a class="page-link" href="#">03.</a></li>
+                        <li class="page-item"><a class="page-link" href="#">04.</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div> -->
     </div>
 </div>
