@@ -3,7 +3,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/plg.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -16,7 +16,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/jkt.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -29,7 +29,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/sby.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -42,7 +42,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/yogya.jpg" alt="" style="height:300px;">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -55,7 +55,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/makassar.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -68,7 +68,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/bali.jpg" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -81,7 +81,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/pdg.jpg" style="height:333px;" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -94,7 +94,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/mlg.jpg" style="height:290px;" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">
@@ -107,7 +107,7 @@
 
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <a href="shop.html">
+                    <a href="index.php?page=MenuKosan">
                         <img src="css/img/kota/bdg.jpg" style="height:233px;" alt="">
                         <!-- Hover Content -->
                         <div class="hover-content">

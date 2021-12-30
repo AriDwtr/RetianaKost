@@ -17,6 +17,7 @@
 
 
     <!-- Core Style CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/css/core-style.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -70,6 +71,12 @@
                 switch ($page) {
                     case 'MenuKosan':
                         include "page/kosan/menu_kosan.php";
+                        break;
+                    case 'Wilayah':
+                        include "page/kosan/detail_daerah.php";
+                        break;
+                    case 'Detail':
+                        include "page/kosan/detail_kosan.php";
                         break;
                 }
             } else {
