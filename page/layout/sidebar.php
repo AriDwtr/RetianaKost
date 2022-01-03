@@ -5,7 +5,7 @@
     </div>
     <!-- Logo -->
     <div class="logo">
-        <a href="index.html"><img src="css/Logo/SVG/3xlogo circle.svg" style="height: 120px;" alt=""></a>
+        <a href="index.php"><img src="css/Logo/SVG/3xlogo circle.svg" style="height: 120px;" alt=""></a>
     </div>
     <!-- Amado Nav -->
     <nav class="amado-nav">

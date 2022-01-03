@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 05:21 PM
+-- Generation Time: Jan 03, 2022 at 08:42 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -48,8 +48,8 @@ CREATE TABLE `kosan` (
 --
 
 INSERT INTO `kosan` (`id_kosan`, `nama_kosan`, `wilayah`, `tarif_bulan`, `tarif_tahun`, `layanan`, `foto_utama`, `foto_kamar`, `foto_toilet`, `fasilitas`, `tlp`, `map`, `alamat`) VALUES
-(13, 'Kosan Retania Palembang', 'KOTA PALEMBANG', 'Rp. 450.000', 'Rp. 5.000.000', 'Khusus Wanita', '074525100_1429960385-10.jpg', 'content_kost_murah.jpg', '', 'Free Wifi 24 jam,Kamar Mandi Dalam,AC', '081218113193', 'LatLng(-2.940235, 104.732458)', NULL),
-(14, 'Kosan Nia', 'KOTA ADM. JAKARTA SELATAN', 'Rp. 500.000', 'Rp. 6.000.000', 'Pria & Wanita', 'content_kost_murah.jpg', '', '', 'Free Wifi 24 jam,AC,Kipas Angin,Tempat Tidur Spring Bed', '081218113193', 'LatLng(-6.163348, 106.902208)', 'jl. sudirman said nomor 45 jakarta selatan');
+(15, 'Retania Kost', 'KOTA PALEMBANG', 'Rp. 300.000', 'Rp. 3.000.000', 'Khusus Wanita', '074525100_1429960385-10.jpg', 'content_kost_murah.jpg', '', 'Free Wifi 24 jam,AC,Meja Belajar', '081218113193', 'LatLng(-2.938241, 104.732924)', 'jl. suka bangun 2 '),
+(16, 'Merdeka Kosan jakarta', 'KOTA ADM. JAKARTA PUSAT', 'Rp. 500.000', 'Rp. 6.000.000', 'Khusus Wanita', 'content_kost_murah.jpg', '074525100_1429960385-10.jpg', '', 'Free Wifi 24 jam,Kamar Mandi Dalam,Tempat Tidur Spring Bed', '0887471560244', 'LatLng(-6.162382, 106.841762)', 'jl. jend sudirman');
 
 -- --------------------------------------------------------
 
@@ -71,10 +71,71 @@ CREATE TABLE `lokasi` (
 --
 
 INSERT INTO `lokasi` (`id_lokasi`, `id_provinsi`, `provinsi`, `id_kota`, `kota`, `ket_lokasi`) VALUES
-(2, 16, 'SUMATERA SELATAN', 17, 'KOTA PALEMBANG', 'Kosan di Kota PAlembang'),
-(3, 31, 'DKI JAKARTA', 32, 'KOTA ADM. JAKARTA SELATAN', 'kosan di jakarta'),
-(4, 51, 'BALI', 52, 'KOTA DENPASAR', 'kosan di bali'),
-(5, 17, 'BENGKULU', 17, 'KAB. LEBONG', 'kosan di bengkulu');
+(12, 16, 'SUMATERA SELATAN', 17, 'KOTA PALEMBANG', 'Kota Palembang'),
+(13, 31, 'DKI JAKARTA', 32, 'KOTA ADM. JAKARTA PUSAT', 'jakarta pusat');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penghuni`
+--
+
+CREATE TABLE `penghuni` (
+  `id_penghuni` int(5) NOT NULL,
+  `nik` varchar(20) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jk` varchar(20) NOT NULL,
+  `tlp` varchar(30) NOT NULL,
+  `kosan` text NOT NULL,
+  `nomor_kosan` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penghuni`
+--
+
+INSERT INTO `penghuni` (`id_penghuni`, `nik`, `nama`, `jk`, `tlp`, `kosan`, `nomor_kosan`) VALUES
+(2, '1675601080600', 'Alamsyahh', 'Perempuan', '08867158273822', 'Retania Kost', 'B151');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `social_media`
+--
+
+CREATE TABLE `social_media` (
+  `id_sosmed` int(1) NOT NULL,
+  `link` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `social_media`
+--
+
+INSERT INTO `social_media` (`id_sosmed`, `link`) VALUES
+(1, 'retaniakost'),
+(2, 'zcrack'),
+(3, 'retania');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id_user` int(2) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `tipe` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `username`, `password`, `tipe`) VALUES
+(1, 'admin', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -91383,6 +91444,24 @@ ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id_lokasi`);
 
 --
+-- Indexes for table `penghuni`
+--
+ALTER TABLE `penghuni`
+  ADD PRIMARY KEY (`id_penghuni`);
+
+--
+-- Indexes for table `social_media`
+--
+ALTER TABLE `social_media`
+  ADD PRIMARY KEY (`id_sosmed`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -91390,13 +91469,31 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `kosan`
 --
 ALTER TABLE `kosan`
-  MODIFY `id_kosan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_kosan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
 --
 ALTER TABLE `lokasi`
-  MODIFY `id_lokasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_lokasi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `penghuni`
+--
+ALTER TABLE `penghuni`
+  MODIFY `id_penghuni` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `social_media`
+--
+ALTER TABLE `social_media`
+  MODIFY `id_sosmed` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

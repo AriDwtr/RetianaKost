@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/css/core-style.css">
     <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
@@ -46,12 +45,11 @@
 
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
-
         <!-- Mobile Nav (max width 767px)-->
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="index.html"><img src="css/Logo/SVG/3xlogo icon.svg" alt=""></a>
+                <a href="index.php"><img src="css/Logo/SVG/3xlogo icon.svg" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -62,7 +60,7 @@
         <!-- Header Area Start / side bar -->
         <?php include "page/layout/sidebar.php" ?>
         <!-- Header Area End / sidebar -->
-
+     
         <!-- content  -->
         <?php
         if (isset($_GET['page'])) {

@@ -1,4 +1,4 @@
-
+<?php error_reporting(0); ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -134,7 +134,6 @@
                                             <center><span class="badge bg-success">Aktif</span></center>
                                         </td>
                                         <td>
-                                            <a href="http://"><span class="badge bg-primary">Edit <i class="fas fa-pen"></i></span></a>
                                             <a href="index.php?page=hapuslokasi&id=<?php echo $data['id_lokasi']; ?>" onClick="return confirm('Hapus Lokasi Yang Anda Pilih ?')" title="Hapus Pasien"><span class="badge bg-danger">Hapus <i class="fas fa-trash"></i></span></a>
                                         </td>
 

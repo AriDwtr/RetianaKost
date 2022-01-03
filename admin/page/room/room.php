@@ -51,10 +51,10 @@
                              </div>
                              <div class="card-footer">
                                  <div class="text-right">
-                                     <a href="#" class="btn btn-sm bg-teal">
+                                     <a href="index.php?page=editroom&id=<?= $row['id_kosan'] ?>" class="btn btn-sm bg-teal">
                                          <i class="fas fa-pen"></i> Edit
                                      </a>
-                                     <a href="#" class="btn btn-sm btn-danger">
+                                     <a href="index.php?page=deleteroom&id=<?= $row['id_kosan'] ?>" onClick="return confirm('Hapus Kosan Yang Anda Pilih ?')" class="btn btn-sm btn-danger">
                                          <i class="fas fa-trash"></i> Delete
                                      </a>
                                  </div>

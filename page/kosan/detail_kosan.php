@@ -10,7 +10,7 @@
             <div class="col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mt-50">
-                        <li class="breadcrumb-item active" aria-current="page"><?= $data['nama_kosan']; ?></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= $data['wilayah']; ?> / <?= $data['nama_kosan']; ?></li>
                     </ol>
                 </nav>
             </div>
@@ -94,13 +94,13 @@
                                 $fasilitas = $data['fasilitas'];
                                 $datafasilitas = explode(',', $fasilitas);
                                 foreach ($datafasilitas as $value) {
-                                    echo '<span class="badge badge-primary">' . $value . '</span> ';
+                                    echo '<span class="badge badge-primary" style=font-size:14px;>' . $value . '</span> ';
                                 }
                                 ?>
                             </div>
                         </div>
-                        <p style="color:#760d9d"><i class="fa fa-money"> </i> <?= $data['tarif_bulan'] ?> / Bulan </p>
-                        <p style="color:#760d9d"><i class="fa fa-money"> </i> <?= $data['tarif_tahun'] ?> / Tahun </p>
+                        <p style="color:green"><i class="fa fa-money"> </i> <?= $data['tarif_bulan'] ?> / Bulan </p>
+                        <p style="color:green"><i class="fa fa-money"> </i> <?= $data['tarif_tahun'] ?> / Tahun </p>
                         <div class="alert alert-secondary" role="alert">
                             <i class="fa fa-users"> </i> Kosan <?= $data['layanan'] ?>
                         </div>
