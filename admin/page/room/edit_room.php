@@ -30,8 +30,6 @@ $data_edit = mysqli_fetch_array($query_edit);
         if (isset($_POST['add'])) {
             $nama_kosan = $_POST['namakosan'];
             $wilayah = $_POST['wilayah'];
-            $tarif_bulan = $_POST['tarif_bulan'];
-            $tarif_tahun = $_POST['tarif_tahun'];
             $layanan = $_POST['layanan'];
             //---- foto utama ---
             $foto_utama = $_FILES['foto_utama']['name'];
@@ -58,8 +56,6 @@ $data_edit = mysqli_fetch_array($query_edit);
             $tempname_fotoToilet = $_FILES['foto_toilet']['tmp_name'];
             }
 
-            $fasilitas = $_POST['fasilitas'];
-            $data_fasilitas = implode(',', $fasilitas);
 
             $tlp = $_POST['notlp'];
             $latlong = $_POST['latlong'];
@@ -67,9 +63,9 @@ $data_edit = mysqli_fetch_array($query_edit);
 
             $folder = "img/db_images/";
 
-            mysqli_query($conn, "UPDATE kosan SET nama_kosan = '$nama_kosan' ,wilayah = '$wilayah',tarif_bulan = '$tarif_bulan', tarif_tahun = '$tarif_tahun',
-            layanan = '$layanan',foto_utama = '$foto_utama',foto_kamar = '$foto_kamar',foto_toilet = '$foto_toilet',fasilitas = '$data_fasilitas',tlp = '$tlp',map = '$latlong',alamat = '$alamat'
+            mysqli_query($conn, "UPDATE kosan SET nama_kosan = '$nama_kosan' ,wilayah = '$wilayah',layanan = '$layanan',foto_utama = '$foto_utama',foto_kamar = '$foto_kamar',foto_toilet = '$foto_toilet',tlp = '$tlp',map = '$latlong',alamat = '$alamat'
             WHERE id_kosan = '$id'");
+            
 
             move_uploaded_file($tempname_fotoUtama, $folder . $foto_utama);
             move_uploaded_file($tempname_fotoKamar, $folder . $foto_kamar);
@@ -141,18 +137,15 @@ $data_edit = mysqli_fetch_array($query_edit);
                             </p>
 
                             <hr>
-                            <p><b><i><u>Detail Info</u></i></b></p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputName">Tarif Kosan / Bulan</label>
-                                        <input type="text" id="rupiahbulan" value="<?= $data_edit['tarif_bulan'] ?>" name="tarif_bulan" class="form-control" placeholder="Rp. 300.000">
+                                        <input type="text" id="rupiahbulan" name="tarif_bulan" class="form-control" placeholder="Rp. 300.000" hidden>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputName">Tarif Kosan / Tahun</label>
-                                        <input type="text" id="rupiahtahun" value="<?= $data_edit['tarif_tahun'] ?>" name="tarif_tahun" class="form-control" placeholder="Rp. 5.000.000">
+                                        <input type="text" id="rupiahtahun" name="tarif_tahun" class="form-control" placeholder="Rp. 5.000.000" hidden>
                                     </div>
                                 </div>
                             </div>
@@ -252,34 +245,7 @@ $data_edit = mysqli_fetch_array($query_edit);
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Fasilitas Tersedia</label>
-                                <div class="select2-purple">
-                                    <select class="select2" multiple="multiple" name="fasilitas[]" data-placeholder="Pilih Fasilitas" data-dropdown-css-class="select2-purple" style="width: 100%;" required>
-                                        <?php
-                                        $fasilitas = $data_edit['fasilitas'];
-                                        $datafasilitas = explode(',', $fasilitas);
-                                        foreach ($datafasilitas as $value) {
-                                            echo '<option value="'.$value.'" selected>'.$value.'</option>';
-                                        }
-                                        ?>
-                                        <option value="Free Wifi 24 jam">Free Wifi 24 jam</option>
-                                        <option value="Kamar Mandi Dalam">Kamar Mandi Dalam</option>
-                                        <option value="Kamar Mandi Luar">Kamar Mandi Luar</option>
-                                        <option value="Listrik Token">Listrik Token</option>
-                                        <option value="AC">AC</option>
-                                        <option value="Kipas Angin">Kipas Angin</option>
-                                        <option value="Lemari Pakaian">Lemari Pakaian</option>
-                                        <option value="Dapur Umum">Dapur Umum</option>
-                                        <option value="Air 24 Jam">Air Bersih 24 Jam</option>
-                                        <option value="Meja Belajar">Meja Belajar</option>
-                                        <option value="Tempat Tidur Spring Bed">Tempat Tidur Spring Bed</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label>No Telp / Whatsapp</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">

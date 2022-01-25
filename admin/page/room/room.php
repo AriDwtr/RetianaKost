@@ -24,45 +24,47 @@
              <div class="card-body pb-0">
                  <div class="row">
                      <?php
-                     include "koneksi.php";
-                     $query = mysqli_query($conn, "SELECT * FROM kosan");
-                     while ($row = mysqli_fetch_array($query)) { 
-                       
-                         ?>
-                        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
-                         <div class="card bg-light d-flex flex-fill">
-                             <div class="card-header text-muted border-bottom-0">
-                                 <?= $row['wilayah'] ?>
-                             </div>
-                             <div class="card-body pt-0">
-                                 <div class="row">
-                                     <div class="col-7">
-                                         <h2 class="lead"><b><?= $row['nama_kosan'] ?></b></h2>
-                                         <p class="text-muted text-sm"><b>Tarif: </b><?=$row['tarif_bulan']?> / <?=$row['tarif_tahun']?></p>
-                                         <ul class="ml-4 mb-0 fa-ul text-muted">
-                                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: <?= implode(' ', array_slice(str_word_count($row['alamat'], 2), 0, 4)); ?> ...</li>
-                                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: <?= $row['tlp'] ?></li>
-                                         </ul>
-                                     </div>
-                                     <div class="col-5 text-center">
-                                         <img src="img/db_images/<?= $row['foto_utama'] ?>" alt="user-avatar" class="img-circle img-fluid">
+                        include "koneksi.php";
+                        $query = mysqli_query($conn, "SELECT * FROM kosan");
+                        while ($row = mysqli_fetch_array($query)) {
+
+                        ?>
+                         <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                             <div class="card bg-light d-flex flex-fill">
+                                 <div class="card-header text-muted border-bottom-0">
+                                     <?= $row['wilayah'] ?>
+                                 </div>
+                                 <div class="card-body pt-0">
+                                     <div class="row">
+                                         <div class="col-7">
+                                             <h2 class="lead"><b><?= $row['nama_kosan'] ?></b></h2>
+                                             <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: <?= implode(' ', array_slice(str_word_count($row['alamat'], 2), 0, 4)); ?> ...</li>
+                                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: <?= $row['tlp'] ?></li>
+                                             </ul>
+                                         </div>
+                                         <div class="col-5 text-center">
+                                             <img src="img/db_images/<?= $row['foto_utama'] ?>" alt="user-avatar" class="img-circle img-fluid">
+                                         </div>
                                      </div>
                                  </div>
-                             </div>
-                             <div class="card-footer">
-                                 <div class="text-right">
-                                     <a href="index.php?page=editroom&id=<?= $row['id_kosan'] ?>" class="btn btn-sm bg-teal">
-                                         <i class="fas fa-pen"></i> Edit
-                                     </a>
-                                     <a href="index.php?page=deleteroom&id=<?= $row['id_kosan'] ?>" onClick="return confirm('Hapus Kosan Yang Anda Pilih ?')" class="btn btn-sm btn-danger">
-                                         <i class="fas fa-trash"></i> Delete
-                                     </a>
+                                 <div class="card-footer">
+                                     <div class="text-right">
+                                         <a href="index.php?page=lihatkamar&id=<?= $row['id_kosan'] ?>" class="btn btn-sm bg-secondary">
+                                             <i class="fas fa-eye"></i> Lihat Kamar
+                                         </a>
+                                         <a href="index.php?page=editroom&id=<?= $row['id_kosan'] ?>" class="btn btn-sm bg-teal">
+                                             <i class="fas fa-pen"></i> Edit Kosan
+                                         </a>
+                                         <a href="index.php?page=deleteroom&id=<?= $row['id_kosan'] ?>" onClick="return confirm('Hapus Kosan Yang Anda Pilih ?')" class="btn btn-sm btn-danger">
+                                             <i class="fas fa-trash"></i> Delete
+                                         </a>
+                                     </div>
                                  </div>
                              </div>
                          </div>
-                     </div>
-                    <?php } ?>
-                     
+                     <?php } ?>
+
                  </div>
              </div>
          </div>

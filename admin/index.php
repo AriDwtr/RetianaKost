@@ -105,6 +105,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         $status = "active";
                         break;
                         //end kosan
+                        //kamar
+                    case 'lihatkamar':
+                        include "page/kamar/kamar.php";
+                        $status = "active";
+                        break;
+                    case 'addkamar':
+                        include "page/kamar/add_kamar.php";
+                        $status = "active";
+                        break;
+                    case 'deletekamar':
+                        include "page/kamar/delete_kamar.php";
+                        $status = "active";
+                        break;
+                    case 'editkamar':
+                        include "page/kamar/edit_kamar.php";
+                        $status = "active";
+                        break;
+                        //endkamar
                         //sosmed
                     case 'sosmed':
                         include "page/sosmed/sosmed.php";
@@ -165,20 +183,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- leaflet geocoder js  -->
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
     <script type="text/javascript">
-        $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
@@ -288,6 +308,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             oFReader.onload = function(oFREvent) {
                 document.getElementById("image-preview-toilet").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageOption1() {
+            document.getElementById("file-upload-option1").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option1").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option1").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageOption2() {
+            document.getElementById("file-upload-option2").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option2").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option2").src = oFREvent.target.result;
             };
         };
 

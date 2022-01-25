@@ -103,14 +103,14 @@
                                 </tr>
                                 <tr>
                                     <td>3.</td>
-                                    <td><i class="fab fa-twitter"></i> <b>Twitter</b></td>
+                                    <td><i class="fas fa-phone-alt"></i> <b>Telp</b></td>
                                     <td>
                                         <?php
                                         include "koneksi.php";
                                         $query_twitter = mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='3'");
                                         $data_twitter = mysqli_fetch_array($query_twitter);
                                         ?>
-                                        <a href="https://www.twitter.com/<?= $data_twitter['link'] ?>" target="_blank">twitter.com/<?= $data_twitter['link'] ?></a>
+                                        <a href="#"><?= $data_twitter['link'] ?></a>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-sm-twitter">

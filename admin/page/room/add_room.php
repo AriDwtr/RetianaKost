@@ -25,8 +25,6 @@
             include "koneksi.php";
             $nama_kosan = $_POST['namakosan'];
             $wilayah = $_POST['wilayah'];
-            $tarif_bulan = $_POST['tarif_bulan'];
-            $tarif_tahun = $_POST['tarif_tahun'];
             $layanan = $_POST['layanan'];
             //---- foto utama ---
             $foto_utama = $_FILES['foto_utama']['name'];
@@ -38,17 +36,14 @@
             $foto_toilet = $_FILES['foto_toilet']['name'];
             $tempname_fotoToilet = $_FILES['foto_toilet']['tmp_name'];
 
-            $fasilitas = $_POST['fasilitas'];
-            $data_fasilitas = implode(',', $fasilitas);
-
             $tlp = $_POST['notlp'];
             $latlong = $_POST['latlong'];
             $alamat = $_POST['alamat'];
 
             $folder = "img/db_images/";
 
-            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,tarif_bulan,tarif_tahun,layanan,foto_utama,foto_kamar,foto_toilet,fasilitas,tlp,map,alamat) 
-            VALUES ('','$nama_kosan','$wilayah','$tarif_bulan','$tarif_tahun','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$data_fasilitas','$tlp','$latlong','$alamat')");
+            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,layanan,foto_utama,foto_kamar,foto_toilet,tlp,map,alamat) 
+            VALUES ('','$nama_kosan','$wilayah','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$tlp','$latlong','$alamat')");
 
             move_uploaded_file($tempname_fotoUtama, $folder . $foto_utama);
             move_uploaded_file($tempname_fotoKamar, $folder . $foto_kamar);
@@ -101,18 +96,15 @@
                             </p>
 
                             <hr>
-                            <p><b><i><u>Detail Info</u></i></b></p>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputName">Tarif Kosan / Bulan</label>
-                                        <input type="text" id="rupiahbulan" name="tarif_bulan" class="form-control" placeholder="Rp. 300.000">
+                                        <input type="text" id="rupiahbulan" name="tarif_bulan" class="form-control" placeholder="Rp. 300.000" hidden>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="inputName">Tarif Kosan / Tahun</label>
-                                        <input type="text" id="rupiahtahun" name="tarif_tahun" class="form-control" placeholder="Rp. 5.000.000">
+                                        <input type="text" id="rupiahtahun" name="tarif_tahun" class="form-control" placeholder="Rp. 5.000.000" hidden>
                                     </div>
                                 </div>
                             </div>
@@ -150,13 +142,13 @@
                                 </div>
                                 <div class="col-4 col-md-4">
                                     <label for="file-upload-kamar" class="custom-file-upload">
-                                        <i class="fas fa-photo-video"></i> Foto Kamar
+                                        <i class="fas fa-photo-video"></i> Foto Optional
                                     </label>
                                     <input id="file-upload-kamar" name="foto_kamar" type="file" onchange="previewImageKamar();" hidden />
                                 </div>
                                 <div class="col-4 col-md-4">
                                     <label for="file-upload-toilet" class="custom-file-upload">
-                                        <i class="fas fa-photo-video"></i> Foto Toilet
+                                        <i class="fas fa-photo-video"></i> Foto Optional
                                     </label>
                                     <input id="file-upload-toilet" name="foto_toilet" type="file" onchange="previewImageToilet();" hidden />
                                 </div>
@@ -166,27 +158,7 @@
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Fasilitas Tersedia</label>
-                                <div class="select2-purple">
-                                    <select class="select2" multiple="multiple" name="fasilitas[]" data-placeholder="Pilih Fasilitas" data-dropdown-css-class="select2-purple" style="width: 100%;" required>
-                                        <option value="Free Wifi 24 jam">Free Wifi 24 jam</option>
-                                        <option value="Kamar Mandi Dalam">Kamar Mandi Dalam</option>
-                                        <option value="Kamar Mandi Luar">Kamar Mandi Luar</option>
-                                        <option value="Listrik Token">Listrik Token</option>
-                                        <option value="AC">AC</option>
-                                        <option value="Kipas Angin">Kipas Angin</option>
-                                        <option value="Lemari Pakaian">Lemari Pakaian</option>
-                                        <option value="Dapur Umum">Dapur Umum</option>
-                                        <option value="Air 24 Jam">Air Bersih 24 Jam</option>
-                                        <option value="Meja Belajar">Meja Belajar</option>
-                                        <option value="Tempat Tidur Spring Bed">Tempat Tidur Spring Bed</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <label>No Telp / Whatsapp</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2022 at 08:42 PM
+-- Generation Time: Jan 25, 2022 at 04:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -24,6 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kamar`
+--
+
+CREATE TABLE `kamar` (
+  `id_kamar` int(5) NOT NULL,
+  `id_kosan` int(5) NOT NULL,
+  `nama_kosan` varchar(100) NOT NULL,
+  `nama_kamar` varchar(100) NOT NULL,
+  `tarif_perbulan` varchar(50) NOT NULL,
+  `tarif_pertahun` varchar(50) NOT NULL,
+  `foto_option1` text DEFAULT NULL,
+  `foto_option2` text DEFAULT NULL,
+  `foto_option3` text DEFAULT NULL,
+  `foto_option4` text DEFAULT NULL,
+  `foto_option5` text DEFAULT NULL,
+  `fasilitas` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kamar`
+--
+
+INSERT INTO `kamar` (`id_kamar`, `id_kosan`, `nama_kosan`, `nama_kamar`, `tarif_perbulan`, `tarif_pertahun`, `foto_option1`, `foto_option2`, `foto_option3`, `foto_option4`, `foto_option5`, `fasilitas`) VALUES
+(3, 15, 'Retania Kost', 'Standart', 'Rp. 400.000', 'Rp. 5.000.000', '074525100_1429960385-10.jpg', '5cad92b70babb2514f8d47e54ea54b1a.png', 'ampera.png', 'logo_HIFARM_horizontal.png', '', 'Kamar Mandi Dalam,Listrik Token,AC,Kipas Angin,Tempat Tidur Spring Bed,Meja Belajar');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kosan`
 --
 
@@ -31,13 +59,10 @@ CREATE TABLE `kosan` (
   `id_kosan` int(10) NOT NULL,
   `nama_kosan` varchar(100) NOT NULL,
   `wilayah` varchar(100) NOT NULL,
-  `tarif_bulan` text DEFAULT NULL,
-  `tarif_tahun` text DEFAULT NULL,
   `layanan` varchar(20) NOT NULL,
   `foto_utama` text DEFAULT NULL,
   `foto_kamar` text DEFAULT NULL,
   `foto_toilet` text DEFAULT NULL,
-  `fasilitas` text NOT NULL,
   `tlp` varchar(20) NOT NULL,
   `map` text DEFAULT NULL,
   `alamat` text DEFAULT NULL
@@ -47,9 +72,10 @@ CREATE TABLE `kosan` (
 -- Dumping data for table `kosan`
 --
 
-INSERT INTO `kosan` (`id_kosan`, `nama_kosan`, `wilayah`, `tarif_bulan`, `tarif_tahun`, `layanan`, `foto_utama`, `foto_kamar`, `foto_toilet`, `fasilitas`, `tlp`, `map`, `alamat`) VALUES
-(15, 'Retania Kost', 'KOTA PALEMBANG', 'Rp. 300.000', 'Rp. 3.000.000', 'Khusus Wanita', '074525100_1429960385-10.jpg', 'content_kost_murah.jpg', '', 'Free Wifi 24 jam,AC,Meja Belajar', '081218113193', 'LatLng(-2.938241, 104.732924)', 'jl. suka bangun 2 '),
-(16, 'Merdeka Kosan jakarta', 'KOTA ADM. JAKARTA PUSAT', 'Rp. 500.000', 'Rp. 6.000.000', 'Khusus Wanita', 'content_kost_murah.jpg', '074525100_1429960385-10.jpg', '', 'Free Wifi 24 jam,Kamar Mandi Dalam,Tempat Tidur Spring Bed', '0887471560244', 'LatLng(-6.162382, 106.841762)', 'jl. jend sudirman');
+INSERT INTO `kosan` (`id_kosan`, `nama_kosan`, `wilayah`, `layanan`, `foto_utama`, `foto_kamar`, `foto_toilet`, `tlp`, `map`, `alamat`) VALUES
+(15, 'Retania Kost', 'KOTA PALEMBANG', 'Khusus Wanita', '074525100_1429960385-10.jpg', 'content_kost_murah.jpg', '', '081218113193', 'LatLng(-2.938241, 104.732924)', 'jl. suka bangun 2 '),
+(16, 'Merdeka Kosan jakarta', 'KOTA ADM. JAKARTA PUSAT', 'Khusus Wanita', 'content_kost_murah.jpg', '074525100_1429960385-10.jpg', '', '0887471560244', 'LatLng(-6.162382, 106.841762)', 'jl. jend sudirman'),
+(17, 'Kosan Pangkal Pinang', 'KOTA PALEMBANG', 'Khusus Pria', 'content_kost_murah.jpg', '074525100_1429960385-10.jpg', '', '081218113193', 'LatLng(-2.151141, 106.085358)', 'jl. pangkal pinang');
 
 -- --------------------------------------------------------
 
@@ -114,8 +140,8 @@ CREATE TABLE `social_media` (
 
 INSERT INTO `social_media` (`id_sosmed`, `link`) VALUES
 (1, 'retaniakost'),
-(2, 'zcrack'),
-(3, 'retania');
+(2, 'retaniakost'),
+(3, '088747156024');
 
 -- --------------------------------------------------------
 
@@ -91432,6 +91458,12 @@ INSERT INTO `wilayah_2020` (`kode`, `nama`) VALUES
 --
 
 --
+-- Indexes for table `kamar`
+--
+ALTER TABLE `kamar`
+  ADD PRIMARY KEY (`id_kamar`);
+
+--
 -- Indexes for table `kosan`
 --
 ALTER TABLE `kosan`
@@ -91466,10 +91498,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `kamar`
+--
+ALTER TABLE `kamar`
+  MODIFY `id_kamar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `kosan`
 --
 ALTER TABLE `kosan`
-  MODIFY `id_kosan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_kosan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
