@@ -32,20 +32,48 @@
 </head>
 
 <body>
+    <?php
+    include "koneksi.php";
+    $ig = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='1'"));
+    $fb = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='2'"));
+    $hp = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='3'"));
+    ?>
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+        <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <i class="icon_close"></i>
+        </div>
+        <div class="search-icon  search-switch">
+            <i class="icon_search"></i>
+        </div>
+        <nav class="mainmenu mobile-menu">
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="index.php?page=Kosan">Kosan</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="top-social">
+            <a href="https://www.facebook.com/<?= $fb['link'] ?>" target="_blank"><i class="fa fa-facebook fa-lg"> </i></a>
+            <a href="https://www.instagram.com/<?= $ig['link'] ?>" target="_blank"><i class="fa fa-instagram fa-lg"></i></a>
+        </div>
+        <ul class="top-widget">
+                <li><i class="fa fa-phone"></i> <?= $hp['link'] ?> </li>
+                <li><i class="fa fa-envelope"></i> RetaniaKost@gmail.com</li>
+        </ul>
+    </div>
     <!-- Header Section Begin -->
     <header class="header-section header-normal">
-    <div class="top-nav">
+        <div class="top-nav">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="tn-left">
-                            <?php 
-                            include "koneksi.php";
-                            $ig = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='1'"));
-                            $fb = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='2'"));
-                            $hp = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM social_media WHERE id_sosmed='3'"));
-                            ?>
-                            <li><i class="fa fa-phone"></i> <?= $hp['link']?> </li>
+                            <li><i class="fa fa-phone"></i> <?= $hp['link'] ?> </li>
                             <li><i class="fa fa-envelope"></i> RetaniaKost@gmail.com</li>
                         </ul>
                     </div>
@@ -66,7 +94,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="logo/PNG/3xlogonew.png" alt="">
+                                <img src="logo/PNG/3xlogonew.png" width="200px" alt="">
                             </a>
                         </div>
                     </div>
@@ -105,8 +133,8 @@
                 include "detail_kamar.php";
                 break;
             case 'cari':
-                    include "cari.php";
-                    break;
+                include "cari.php";
+                break;
         }
     } else {
         include "home.php";
