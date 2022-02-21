@@ -55,6 +55,27 @@ $data_edit = mysqli_fetch_array($query_edit);
             $foto_toilet = $_FILES['foto_toilet']['name'];
             $tempname_fotoToilet = $_FILES['foto_toilet']['tmp_name'];
             }
+             //---- foto option1 -----
+             $foto_option1 = $_FILES['foto_option1']['name'];
+             $tempname_fotoOption1 = $_FILES['foto_option1']['tmp_name'];
+             //---- foto option2 -----
+             $foto_option2 = $_FILES['foto_option2']['name'];
+             $tempname_fotoOption2 = $_FILES['foto_option2']['tmp_name'];
+              //---- foto option3 -----
+            $foto_option3 = $_FILES['foto_option3']['name'];
+            $tempname_fotoOption3 = $_FILES['foto_option3']['tmp_name'];
+            //---- foto option4 -----
+            $foto_option4 = $_FILES['foto_option4']['name'];
+            $tempname_fotoOption4 = $_FILES['foto_option4']['tmp_name'];
+             //---- foto option5 -----
+             $foto_option5 = $_FILES['foto_option5']['name'];
+             $tempname_fotoOption5 = $_FILES['foto_option5']['tmp_name'];
+             //---- foto option6 -----
+             $foto_option6 = $_FILES['foto_option6']['name'];
+             $tempname_fotoOption6 = $_FILES['foto_option6']['tmp_name'];
+              //---- foto option7 -----
+              $foto_option7 = $_FILES['foto_option7']['name'];
+              $tempname_fotoOption7 = $_FILES['foto_option7']['tmp_name'];
 
 
             $tlp = $_POST['notlp'];
@@ -63,13 +84,20 @@ $data_edit = mysqli_fetch_array($query_edit);
 
             $folder = "img/db_images/";
 
-            mysqli_query($conn, "UPDATE kosan SET nama_kosan = '$nama_kosan' ,wilayah = '$wilayah',layanan = '$layanan',foto_utama = '$foto_utama',foto_kamar = '$foto_kamar',foto_toilet = '$foto_toilet',tlp = '$tlp',map = '$latlong',alamat = '$alamat'
+            mysqli_query($conn, "UPDATE kosan SET nama_kosan = '$nama_kosan' ,wilayah = '$wilayah',layanan = '$layanan',foto_utama = '$foto_utama',foto_kamar = '$foto_kamar',foto_toilet = '$foto_toilet', foto_option1 = '$foto_option1', foto_option2 = '$foto_option2', foto_option3 = '$foto_option3', foto_option4 = '$foto_option4', foto_option5 = '$foto_option5', foto_option6 = '$foto_option6', foto_option7 = '$foto_option7', tlp = '$tlp',map = '$latlong',alamat = '$alamat'
             WHERE id_kosan = '$id'");
             
 
             move_uploaded_file($tempname_fotoUtama, $folder . $foto_utama);
             move_uploaded_file($tempname_fotoKamar, $folder . $foto_kamar);
             move_uploaded_file($tempname_fotoToilet, $folder . $foto_toilet);
+            move_uploaded_file($tempname_fotoOption1, $folder . $foto_option1);
+            move_uploaded_file($tempname_fotoOption2, $folder . $foto_option2);
+            move_uploaded_file($tempname_fotoOption3, $folder . $foto_option3);
+            move_uploaded_file($tempname_fotoOption4, $folder . $foto_option4);
+            move_uploaded_file($tempname_fotoOption5, $folder . $foto_option5);
+            move_uploaded_file($tempname_fotoOption6, $folder . $foto_option6);
+            move_uploaded_file($tempname_fotoOption7, $folder . $foto_option7);
 
             echo '<div class="alert alert-success" role="alert">
             Berhasil Memperbaharui Kosan
@@ -105,6 +133,76 @@ $data_edit = mysqli_fetch_array($query_edit);
                                         echo '<img src="img/noimages/defaultimages.png" id="image-preview-toilet" alt="Product Image">';
                                     }else{
                                         echo '<img src="img/db_images/'.$data_edit['foto_toilet'].'" id="image-preview-toilet" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option1']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option1" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option1'].'" id="image-preview-option1" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option2']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option2" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option2'].'" id="image-preview-option2" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option3']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option3" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option3'].'" id="image-preview-option3" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option4']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option4" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option4'].'" id="image-preview-option4" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option5']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option5" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option5'].'" id="image-preview-option5" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option6']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option6" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option6'].'" id="image-preview-option6" alt="Product Image">';
+                                    }
+                                    ?>
+                                    
+                                </div>
+                                <div class="product-image-thumb">
+                                <?php 
+                                    if ($data_edit['foto_option7']==null) {
+                                        echo '<img src="img/noimages/defaultimages.png" id="image-preview-option7" alt="Product Image">';
+                                    }else{
+                                        echo '<img src="img/db_images/'.$data_edit['foto_option7'].'" id="image-preview-option7" alt="Product Image">';
                                     }
                                     ?>
                                     
@@ -238,6 +336,48 @@ $data_edit = mysqli_fetch_array($query_edit);
                                         <i class="fas fa-photo-video"></i> Foto Toilet
                                     </label>
                                     <input id="file-upload-toilet" name="foto_toilet" value="<?= $data_edit['foto_toilet'] ?>" type="file" onchange="previewImageToilet();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option1" name="foto_option1" value="<?= $data_edit['foto_option1'] ?>" type="file" onchange="previewImageOption1();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option2" name="foto_option2" value="<?= $data_edit['foto_option2'] ?>" type="file" onchange="previewImageOption2();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option3" name="foto_option3" value="<?= $data_edit['foto_option3'] ?>" type="file" onchange="previewImageOption3();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option4" name="foto_option4" value="<?= $data_edit['foto_option4'] ?>" type="file" onchange="previewImageOption4();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option5" name="foto_option5" value="<?= $data_edit['foto_option5'] ?>" type="file" onchange="previewImageOption5();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option6" name="foto_option6" value="<?= $data_edit['foto_option6'] ?>" type="file" onchange="previewImageOption6();" hidden/>
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-toilet" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i> Foto Optional
+                                    </label>
+                                    <input id="file-upload-option7" name="foto_option7" value="<?= $data_edit['foto_option7'] ?>" type="file" onchange="previewImageOption7();" hidden/>
                                 </div>
                             </div>
                         </div>

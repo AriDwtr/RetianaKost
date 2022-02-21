@@ -35,6 +35,27 @@
             //---- foto toilet -----
             $foto_toilet = $_FILES['foto_toilet']['name'];
             $tempname_fotoToilet = $_FILES['foto_toilet']['tmp_name'];
+             //---- foto option1 -----
+             $foto_option1 = $_FILES['foto_option1']['name'];
+             $tempname_fotoOption1 = $_FILES['foto_option1']['tmp_name'];
+             //---- foto option2 -----
+             $foto_option2 = $_FILES['foto_option2']['name'];
+             $tempname_fotoOption2 = $_FILES['foto_option2']['tmp_name'];
+              //---- foto option3 -----
+            $foto_option3 = $_FILES['foto_option3']['name'];
+            $tempname_fotoOption3 = $_FILES['foto_option3']['tmp_name'];
+            //---- foto option4 -----
+            $foto_option4 = $_FILES['foto_option4']['name'];
+            $tempname_fotoOption4 = $_FILES['foto_option4']['tmp_name'];
+             //---- foto option5 -----
+             $foto_option5 = $_FILES['foto_option5']['name'];
+             $tempname_fotoOption5 = $_FILES['foto_option5']['tmp_name'];
+             //---- foto option6 -----
+             $foto_option6 = $_FILES['foto_option6']['name'];
+             $tempname_fotoOption6 = $_FILES['foto_option6']['tmp_name'];
+              //---- foto option7 -----
+              $foto_option7 = $_FILES['foto_option7']['name'];
+              $tempname_fotoOption7 = $_FILES['foto_option7']['tmp_name'];
 
             $tlp = $_POST['notlp'];
             $latlong = $_POST['latlong'];
@@ -42,12 +63,19 @@
 
             $folder = "img/db_images/";
 
-            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,layanan,foto_utama,foto_kamar,foto_toilet,tlp,map,alamat) 
-            VALUES ('','$nama_kosan','$wilayah','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$tlp','$latlong','$alamat')");
+            mysqli_query($conn, "INSERT INTO kosan (id_kosan,nama_kosan,wilayah,layanan,foto_utama,foto_kamar,foto_toilet,foto_option1,foto_option2,foto_option3,foto_option4,foto_option5,foto_option6,foto_option7,tlp,map,alamat) 
+            VALUES ('','$nama_kosan','$wilayah','$layanan','$foto_utama','$foto_kamar','$foto_toilet','$foto_option1','$foto_option2','$foto_option3','$foto_option4','$foto_option5','$foto_option6','$foto_option7','$tlp','$latlong','$alamat')");
 
             move_uploaded_file($tempname_fotoUtama, $folder . $foto_utama);
             move_uploaded_file($tempname_fotoKamar, $folder . $foto_kamar);
             move_uploaded_file($tempname_fotoToilet, $folder . $foto_toilet);
+            move_uploaded_file($tempname_fotoOption1, $folder . $foto_option1);
+            move_uploaded_file($tempname_fotoOption2, $folder . $foto_option2);
+            move_uploaded_file($tempname_fotoOption3, $folder . $foto_option3);
+            move_uploaded_file($tempname_fotoOption4, $folder . $foto_option4);
+            move_uploaded_file($tempname_fotoOption5, $folder . $foto_option5);
+            move_uploaded_file($tempname_fotoOption6, $folder . $foto_option6);
+            move_uploaded_file($tempname_fotoOption7, $folder . $foto_option7);
 
             echo '<div class="alert alert-success" role="alert">
             Berhasil Menambahkan Kosan Baru
@@ -69,6 +97,13 @@
                                 <div class="product-image-thumb active"><img src="img/noimages/defaultimages.png" id="image-preview" alt="Product Image"></div>
                                 <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-kamar" alt="Product Image"></div>
                                 <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-toilet" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option1" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option2" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option3" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option4" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option5" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option6" alt="Product Image"></div>
+                                <div class="product-image-thumb"><img src="img/noimages/defaultimages.png" id="image-preview-option7" alt="Product Image"></div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
@@ -151,6 +186,48 @@
                                         <i class="fas fa-photo-video"></i> Foto Optional
                                     </label>
                                     <input id="file-upload-toilet" name="foto_toilet" type="file" onchange="previewImageToilet();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option1" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option1" name="foto_option1" type="file" onchange="previewImageOption1();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option2" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option2" name="foto_option2" type="file" onchange="previewImageOption2();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option3" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option3" name="foto_option3" type="file" onchange="previewImageOption3();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option4" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option4" name="foto_option4" type="file" onchange="previewImageOption4();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option5" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option5" name="foto_option5" type="file" onchange="previewImageOption5();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option6" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option6" name="foto_option6" type="file" onchange="previewImageOption6();" hidden />
+                                </div>
+                                <div class="col-4 col-md-4">
+                                    <label for="file-upload-option7" class="custom-file-upload">
+                                        <i class="fas fa-photo-video"></i>Foto Optional
+                                    </label>
+                                    <input id="file-upload-option7" name="foto_option7" type="file" onchange="previewImageOption7();" hidden />
                                 </div>
                             </div>
                         </div>

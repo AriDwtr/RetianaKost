@@ -33,15 +33,36 @@ $data = mysqli_fetch_assoc($query);
             </div>
             <div class="col-lg-7 offset-lg-1">
                 <form action="" class="contact-form">
-                    <div class="row">
+                    <div class="row g-0">
                         <div class="col-lg-6">
                             <img src="admin/img/db_images/<?= $data['foto_utama'] ?>" alt="">
                         </div>
                         <div class="col-lg-6">
                             <img src="admin/img/db_images/<?= $data['foto_kamar'] ?>" alt="">
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <img src="admin/img/db_images/<?= $data['foto_toilet'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="admin/img/db_images/<?= $data['foto_option1'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="admin/img/db_images/<?= $data['foto_option2'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="admin/img/db_images/<?= $data['foto_option3'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="admin/img/db_images/<?= $data['foto_option4'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="admin/img/db_images/<?= $data['foto_option5'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <img src="admin/img/db_images/<?= $data['foto_option6'] ?>" alt="">
+                        </div>
+                        <div class="col-lg-12">
+                            <img src="admin/img/db_images/<?= $data['foto_option7'] ?>" alt="">
                             <a target="_blank" href="https://wa.me/<?= preg_replace('/^0/', '62', $data['tlp']) ?>?text=Hai,%20Saya%20tertarik%20dengan%20kosan%20<?= $data['nama_kosan'] ?>%20beralamat%20di%20<?= $data['alamat'] ?>.%20Apakah%20masih%20tersedia%20kamar%20?" class="btn btn-primary btn-block" style="background-color:#ff3d51;border: 1px solid #ff3d51;"><i class="fa fa-whatsapp fa-lg"> </i> Hubungi Pemilik</a>
                         </div>
                     </div>

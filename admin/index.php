@@ -331,6 +331,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
             };
         };
 
+        function previewImageOption3() {
+            document.getElementById("file-upload-option3").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option3").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option3").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageOption4() {
+            document.getElementById("file-upload-option4").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option4").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option4").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageOption5() {
+            document.getElementById("file-upload-option5").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option5").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option5").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageOption6() {
+            document.getElementById("file-upload-option6").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option6").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option6").src = oFREvent.target.result;
+            };
+        };
+
+        function previewImageOption7() {
+            document.getElementById("file-upload-option7").style.display = "block";
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("file-upload-option7").files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                document.getElementById("image-preview-option7").src = oFREvent.target.result;
+            };
+        };
+
         //maps
         // set lokasi latitude dan longitude, lokasinya kota palembang 
         var mymap = L.map('mapid').setView([-2.9547949, 104.6929233], 5);
